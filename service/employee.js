@@ -25,3 +25,22 @@ module.exports.loadData = async () => {
 
     }
 }
+
+module.exports.findAll = async (filter) => {
+    try {
+        let _filter = filter;
+        if(!_filter){
+            _filter = {};
+        } else {
+            _filter = {
+                FirstName: filter
+            };
+        }
+        console.log(filter);
+        console.log(_filter);
+        const results = await Employee.find(_filter);
+        return results;
+    }catch(error){
+        console.log('employees not found');
+    }
+}
